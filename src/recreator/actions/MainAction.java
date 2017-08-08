@@ -18,6 +18,7 @@ public class MainAction extends AnAction {
 
 		if (configService.isConfigOk() && dbService.isDriverOk()) { //get config map
 			String confName = configService.selectConfig(); //choose DB to recreate
+			if (confName==null || confName.trim().equals("")) return;
 			DbConfig conf = configService.getConfigByKey(confName);
 			if (conf != null) {
 				if (dbService.doCreateDb(conf) && dbService.doInitDb(conf)) { //drop and create db, reconnect to it and run init
