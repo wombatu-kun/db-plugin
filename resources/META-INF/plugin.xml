@@ -1,0 +1,34 @@
+<idea-plugin version="2">
+  <id>wkidplu.dbrecreator</id>
+  <name>DbReCreator</name>
+  <version>1.0</version>
+  <vendor email="wombatukun@gmail.com">wombatu-kun</vendor>
+
+  <description>Plugin ReCreates PostgresDb, it's useful in projects with pg-extensions and FlyWayDB.</description>
+
+  <change-notes>Everything changes</change-notes>
+
+  <idea-version since-build="141.0"/>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <projectService serviceImplementation="recreator.state.PluginProperties"/>
+  </extensions>
+
+  <actions>
+    <action id="ReCreateDB" class="recreator.actions.MainAction" text="ReCreateDB" description="ReCreateDB">
+      <add-to-group group-id="ToolsMenu" anchor="first"/>
+      <keyboard-shortcut first-keystroke="control alt shift W" keymap="$default"/>
+    </action>
+
+    <!--<group id="DbReCreatorRootMenu" class="com.intellij.openapi.actionSystem.DefaultActionGroup" text="DbReCreator" description="ReCreator Plugin Menu">
+      <add-to-group group-id="ToolsMenu" anchor="first"  />
+      <action id="DbReCreator.ReCreate" class="recreator.actions.MainAction" text="ReCreate" description="ReCreateDB">
+        <keyboard-shortcut first-keystroke="control alt shift W" keymap="$default"/>
+      </action>
+      <action id="DbReCreator.Config" class="recreator.actions.ConfigAction" text="Config" description="ConfigDB">
+        <keyboard-shortcut first-keystroke="control alt shift Q" keymap="$default"/>
+      </action>
+    </group>-->
+  </actions>
+
+</idea-plugin>
