@@ -16,7 +16,11 @@ public class MainAction extends AnAction {
 		DbService dbService = new DbService(uiService);
 		ConfigService configService = new ConfigService(uiService);
 
-		if (configService.isConfigOk() && dbService.isDriverOk()) { //get config map
+		boolean isOk = true;
+		while ((!configService.isConfigOk() || !dbService.isDriverOk()) && isOk) { //get config map
+			isOk = uiService.showConfigurationDialog(configService);
+		}
+		if (isOk) {
 			String confName = configService.selectConfig(); //choose DB to recreate
 			if (confName==null || confName.trim().equals("")) return;
 			DbConfig conf = configService.getConfigByKey(confName);
@@ -25,10 +29,8 @@ public class MainAction extends AnAction {
 					uiService.showSuccessMsg("Congratulations! <b>" + conf.getDbName() + "</b> was recreated successfully.");
 				}
 			} else {
-				uiService.showErrorDialog(confName + ": config not found. Check configuration at .idea/db-configs.xml");
+				uiService.showErrorDialog(confName + ": config not found. Check plugin configuration.");
 			}
-		} else {
-			uiService.showErrorDialog("At first configure .idea/db-configs.xml, then reopen project and use action");
 		}
 	}
 

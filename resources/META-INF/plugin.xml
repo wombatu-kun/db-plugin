@@ -15,20 +15,21 @@
   </extensions>
 
   <actions>
-    <action id="ReCreateDB" class="recreator.actions.MainAction" text="ReCreateDB" description="ReCreateDB">
+    <!--<action id="ReCreateDB" class="recreator.actions.MainAction" text="ReCreateDB" description="ReCreateDB">
       <add-to-group group-id="ToolsMenu" anchor="first"/>
       <keyboard-shortcut first-keystroke="control alt shift W" keymap="$default"/>
-    </action>
+    </action>-->
 
-    <!--<group id="DbReCreatorRootMenu" class="com.intellij.openapi.actionSystem.DefaultActionGroup" text="DbReCreator" description="ReCreator Plugin Menu">
+    <group id="DbReCreatorRootMenu" class="com.intellij.openapi.actionSystem.DefaultActionGroup"
+           text="DbReCreator" description="ReCreator Plugin Menu" popup="true">
       <add-to-group group-id="ToolsMenu" anchor="first"  />
       <action id="DbReCreator.ReCreate" class="recreator.actions.MainAction" text="ReCreate" description="ReCreateDB">
         <keyboard-shortcut first-keystroke="control alt shift W" keymap="$default"/>
       </action>
-      <action id="DbReCreator.Config" class="recreator.actions.ConfigAction" text="Config" description="ConfigDB">
+      <action id="DbReCreator.Configure" class="recreator.actions.ConfigAction" text="Configure" description="ConfigDB">
         <keyboard-shortcut first-keystroke="control alt shift Q" keymap="$default"/>
       </action>
-    </group>-->
+    </group>
   </actions>
 
 </idea-plugin>

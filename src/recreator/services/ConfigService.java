@@ -10,14 +10,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ConfigService {
-	private static final String DEFAULT_DB_NAME = "module_test";
-	private static final String DEFAULT_DB_KEY = "EXAMPLE";
+	public static final String DEFAULT_DB_NAME = "EDIT_DB_NAME_HERE";
+	private static final String DEFAULT_DB_KEY = "EDIT_CONFIG_ALIAS_HERE";
 
-	private UiService uiService;
 	private Map<String,DbConfig> configMap;
 
 	public ConfigService(UiService uiService) {
-		this.uiService = uiService;
 		PluginProperties props = ServiceManager.getService(uiService.getProject(), PluginProperties.class);
 		configMap = props.state;
 		if (configMap==null || configMap.isEmpty()) {
@@ -46,7 +44,7 @@ public class ConfigService {
 		return conf;
 	}
 
-	private DbConfig createExampleConfig() {
+	public static DbConfig createExampleConfig() {
 		DbConfig config = new DbConfig();
 		config.setDbName(DEFAULT_DB_NAME);
 		config.setServerUrl("jdbc:postgresql://localhost:5432");
@@ -57,4 +55,8 @@ public class ConfigService {
 		config.setInitScript("create extension pg_trgm;");
 		return config;
 	}
+
+	public Map<String, DbConfig> getConfigMap() { return configMap; }
+
+	public void setConfigMap(Map<String, DbConfig> configMap) {	this.configMap = configMap; }
 }
